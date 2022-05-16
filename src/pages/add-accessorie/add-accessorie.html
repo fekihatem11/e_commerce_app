@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons>
+      <button ion-button clear (click)="dismissModal()">Fermer</button>
+    </ion-buttons>
+    <ion-title text-center>Ajouter accessoire</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <form [formGroup]="accessorieForm">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Accessorie type</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+
+
+        <ion-item formArrayName="desc"  *ngFor="let descContol of getDesc().controls; let i = index">
+          <ion-label floating>description</ion-label>
+          <ion-input type="text" [formControlName]="i"></ion-input>
+        </ion-item>
+        <button round ion-button  (click)="onAddDesc()">Ajouter une description</button>
+
+
+      <ion-item>
+        <ion-label floating>phone number</ion-label>
+        <ion-input type="text" formControlName="phone"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>link photo</ion-label>
+        <ion-input type="text" formControlName="photo"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button round ion-button full (click)="onSubmitForm()">add accessorie</button>
+    <span ion-text color="danger">{{ errorMessage }}</span>
+  </form>
+</ion-content>

@@ -1,0 +1,39 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list no-lines>
+      <ion-item *ngIf="!isAuth">
+        <button ion-button icon-start (click)="onNavigate(authPage, {mode: 'connect'})" >
+          <ion-icon name="person"></ion-icon>
+          SignIn
+        </button>
+      </ion-item>
+      <ion-item *ngIf="!isAuth">
+        <button ion-button icon-start (click)="onNavigate(authPage, {mode: 'new'})">
+          <ion-icon name="person-add"></ion-icon>
+          Create User
+        </button>
+      </ion-item>
+      <ion-item>
+        <button ion-button icon-start (click)="onNavigate(accessoriePage)">
+          <ion-icon name="filing"></ion-icon>
+          Accessories
+        </button>
+      </ion-item>
+      <ion-item *ngIf="isAuth">
+        <button ion-button icon-start (click)="onDisconnect() " >
+          <ion-icon name="exit"></ion-icon>
+          Sign out
+        </button>
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+<ion-nav [root]="authPage" #content></ion-nav>
+

@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="onToggleMenu()">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title *ngIf="mode === 'new'">SignUp</ion-title>
+    <ion-title *ngIf="mode === 'connect'">SignIn</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <form [formGroup]="authForm">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Adresse mail</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Mot de passe</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button round ion-button full (click)="onSubmitForm()">Connect</button>
+    <span ion-text color="danger">{{ errorMessage }}</span>
+  </form>
+</ion-content>
